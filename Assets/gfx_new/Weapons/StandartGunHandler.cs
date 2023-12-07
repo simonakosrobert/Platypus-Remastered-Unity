@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.SymbolStore;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,21 +11,24 @@ public class StandartGunHandler : MonoBehaviour
     [SerializeField] private float ySpeed;
     [SerializeField] private GameObject whiteFlash;
     [SerializeField] private AudioSource dinkSound;
+    [SerializeField] private bool isTop;
 
 
     private Camera cam;
-    private int tick;
+    private float tick;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {   
             GameObject flash = Instantiate(whiteFlash, new Vector2(gameObject.transform.position.x + gameObject.GetComponent<SpriteRenderer>().size.x/2, gameObject.transform.position.y), Quaternion.identity);
+            flash.transform.SetParent(GameObject.Find("Effects").transform);
             flash.GetComponent<SpriteRenderer>().sortingOrder = 60;
             other.GetComponent<EnemyHealth>().health -= 30;
             Destroy(gameObject);
 
             AudioSource shoot = Instantiate(dinkSound);
+            shoot.transform.SetParent(GameObject.Find("Effects").transform);
             shoot.Play();
             Destroy(shoot.gameObject, shoot.clip.length);
         }
@@ -47,14 +51,17 @@ public class StandartGunHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        tick += 1;
-        if (tick < 5)
+        tick += Time.deltaTime;
+        if (tick < 0.083f)
         {
-            transform.position = new Vector2(transform.position.x + xSpeed, transform.position.y + ySpeed);
+            transform.Translate(Vector2.right * Time.deltaTime * xSpeed);
+            if (isTop) transform.Translate(Vector2.up * Time.deltaTime * ySpeed);
+            else transform.Translate(Vector2.down * Time.deltaTime * ySpeed);
+            
         }
         else
         {
-            transform.position = new Vector2(transform.position.x + xSpeed, transform.position.y);
+            transform.Translate(Vector2.right * Time.deltaTime * xSpeed);
         }   
         DestroyBullet();
     }

@@ -16,6 +16,8 @@ public class HillsMovement : MonoBehaviour
     public float offsetY;
     private List<GameObject> SpriteObjects = new List<GameObject>();
 
+    [SerializeField] private GameObject parentObject;
+
     public Camera cam;
 
     public static Vector3 objectSizeCalculator(Camera _cam ,GameObject _object)
@@ -49,6 +51,7 @@ public class HillsMovement : MonoBehaviour
         System.Random rnd = new System.Random();
         int randomSprite = rnd.Next(1, PreFabs.Count);
         GameObject clone = Instantiate(PreFabs[randomSprite], new Vector3(0, 0, 0), Quaternion.identity);
+        clone.transform.SetParent(this.transform, true);
         Vector3 cloneSize = objectSizeCalculator(cam, clone);
         Vector3 listSize = objectListSizeCalculator(cam, SpriteObjects);
         Vector3 BottomLeft = cam.ViewportToWorldPoint(new Vector3(0f + cloneSize.x/2 + listSize.x, 0f + cloneSize.y/2 - offsetY, 1f));
@@ -101,9 +104,12 @@ public class HillsMovement : MonoBehaviour
         for (int i = SpriteObjects.Count - 1; i >= 0; i--)
         {        
 
-            float newX = SpriteObjects[i].transform.position.x + speed;
+            // float newX = SpriteObjects[i].transform.position.x + speed;
 
-            SpriteObjects[i].transform.position = new Vector3(newX, SpriteObjects[i].transform.position.y, 0);
+            // SpriteObjects[i].transform.position = new Vector3(newX, SpriteObjects[i].transform.position.y, 0);
+
+            SpriteObjects[i].transform.Translate(Vector2.left * Time.deltaTime * speed);
+
             Vector3 RightX = cam.WorldToViewportPoint(SpriteObjects[i].GetComponent<Renderer>().bounds.max);
             if (RightX.x < 0.0f)
                 {

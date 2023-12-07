@@ -99,10 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8923feafe482c45ab5ad251277b6ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSpeed: 0.3
-  ySpeed: 0.03
+  xSpeed: 15
+  ySpeed: 2
   whiteFlash: {fileID: 2705332189006220574, guid: 1022287b8b47abc4880ee247a6b92586, type: 3}
   dinkSound: {fileID: 3489275651783030550, guid: 3b1ebe08ed39feb41b8c211baf891b05, type: 3}
+  isTop: 1
 --- !u!50 &5584651434695230039
 Rigidbody2D:
   serializedVersion: 4

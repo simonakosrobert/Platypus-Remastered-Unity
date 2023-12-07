@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6461831087079613907}
   - component: {fileID: -3895800889809701675}
   - component: {fileID: 6109460395207953873}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GreenBigUns
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: d13643a6d3c7d154db753a7e8c1660de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147eef0d9d9706740ad26c56abf98f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.02
+  speed: 1
   cam: {fileID: 0}
   sprites:
   - {fileID: 21300000, guid: d13643a6d3c7d154db753a7e8c1660de, type: 3}
@@ -114,6 +114,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c82f16f1979c41d4b92622704102c087, type: 3}
   explosionSound: {fileID: 3489275651783030550, guid: e8398e0ff0638c04fbc10769a2bf46ed, type: 3}
   explosion: {fileID: 3737014607972374688, guid: eb6cc84b882fc7c4d9e4dda89b04e5af, type: 3}
+  smokeRing: {fileID: 4345605395841438110, guid: 37e7b6388c42bce4cbc2904360736e06, type: 3}
   damage0Collider: {fileID: -5742426947048200601}
   damage1Collider: {fileID: 6461831087079613907}
   damage2Collider: {fileID: -3895800889809701675}
@@ -135,7 +136,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -260,7 +261,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -341,7 +342,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -425,7 +426,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

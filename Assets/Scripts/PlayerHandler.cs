@@ -35,7 +35,8 @@ public class PlayerHandler : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        SaveLoadData.Load();
         Application.targetFrameRate = 60;
         shipRenderer = ship.GetComponent<SpriteRenderer>();
         cam = Camera.main;
@@ -100,54 +101,56 @@ public class PlayerHandler : MonoBehaviour
 
     void Shipmovement()
     {   
-        
-        if (moveActionToUse is not null && !isExploded)
+        if (GameHandler.pause == false && GameHandler.StageIntro == false)
         {
-
-            Vector2 moveDirection = moveActionToUse.action.ReadValue<Vector2>();
-
-            if (moveDirection.y > 0.0f && animationSpeed < 40)
+            if (moveActionToUse is not null && !isExploded)
             {
-                if (animationSpeed >= 0) animationSpeed += 4;
-                else if (animationSpeed < 0) animationSpeed += 8;
-                
-            }
-            else if (moveDirection.y < 0.0f && animationSpeed > -40)
-            {
-                if (animationSpeed <= 0) animationSpeed -= 4;
-                else if (animationSpeed > 0) animationSpeed -= 8;
-            }
-            else if (moveDirection.y == 0.0f)
-            {   
-                if (animationSpeed >= -40 && animationSpeed < 0)
+
+                Vector2 moveDirection = moveActionToUse.action.ReadValue<Vector2>();
+
+                if (moveDirection.y > 0.0f && animationSpeed < 40)
                 {
-                    animationSpeed += 4; 
+                    if (animationSpeed >= 0) animationSpeed += 4;
+                    else if (animationSpeed < 0) animationSpeed += 8;
+                    
                 }
-                if (animationSpeed <= 40 && animationSpeed > 0)
+                else if (moveDirection.y < 0.0f && animationSpeed > -40)
                 {
-                    animationSpeed -= 4; 
+                    if (animationSpeed <= 0) animationSpeed -= 4;
+                    else if (animationSpeed > 0) animationSpeed -= 8;
+                }
+                else if (moveDirection.y == 0.0f)
+                {   
+                    if (animationSpeed >= -40 && animationSpeed < 0)
+                    {
+                        animationSpeed += 4; 
+                    }
+                    if (animationSpeed <= 40 && animationSpeed > 0)
+                    {
+                        animationSpeed -= 4; 
+                    }
+                    
                 }
                 
-            }
-            
-            transform.Translate(moveDirection * speed * Time.deltaTime); 
+                transform.Translate(moveDirection * speed * Time.deltaTime); 
 
-            if (Input.GetKey(KeyCode.W))
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, 0);
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y - 0.1f, 0);
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.position = new Vector3(transform.position.x  + 0.1f, transform.position.y, 0);
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.position = new Vector3(transform.position.x - 0.1f, transform.position.y, 0);
-            }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, 0);
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y - 0.1f, 0);
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    transform.position = new Vector3(transform.position.x  + 0.1f, transform.position.y, 0);
+                }
+                if (Input.GetKey(KeyCode.A))
+                {
+                    transform.position = new Vector3(transform.position.x - 0.1f, transform.position.y, 0);
+                }
+        }
                
         }
 
