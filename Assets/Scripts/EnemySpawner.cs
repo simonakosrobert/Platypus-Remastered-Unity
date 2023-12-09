@@ -9,18 +9,35 @@ public class GreenBigUnsSpawner : MonoBehaviour
     [SerializeField] private GameObject preFab;
     [SerializeField] Camera cam;
     [SerializeField] private int sortingOrder;
+    [SerializeField] private int spawnRate;
+    [SerializeField] private bool fromLeft;
+    [SerializeField] private bool isRandomX;
+
+    Vector3 StartingPoint;
+    private float randomX;
 
     void addSprite(GameObject _prefab)
     {
         float randomY = Random.Range(0.1f, 0.9f);
+
+        randomX = 0;
+        if (isRandomX) randomX = Random.Range(0.2f, 0.5f);
 
         GameObject clone = Instantiate(_prefab, new Vector3(0, 0, 0), Quaternion.identity);
         clone.transform.SetParent(this.transform);
 
         Vector3 cloneSize = HillsMovement.objectSizeCalculator(cam, clone);
 
-        Vector3 BottomLeft = cam.ViewportToWorldPoint(new Vector3(0f - cloneSize.x, randomY, 0f));
-        clone.transform.position = BottomLeft;
+        if (fromLeft)
+        {
+            StartingPoint = cam.ViewportToWorldPoint(new Vector3(0f - cloneSize.x - randomX, randomY, 0f));
+        }
+        else
+        {
+            StartingPoint = cam.ViewportToWorldPoint(new Vector3(1f + cloneSize.x + randomX, randomY, 0f));
+        }
+        
+        clone.transform.position = StartingPoint;
         clone.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;  
         
     }
@@ -41,7 +58,7 @@ public class GreenBigUnsSpawner : MonoBehaviour
         
 
 
-        if (tick > 5 && GameHandler.pause != true && GameHandler.StageIntro != true)
+        if (tick > spawnRate && GameHandler.pause != true && GameHandler.StageIntro != true)
         {
             addSprite(preFab);
             tick = 0;

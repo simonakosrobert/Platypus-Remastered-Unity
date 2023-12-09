@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: debris2-green-animation
+  m_Name: greenBigUnDebris
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -33,7 +33,7 @@ AnimationClip:
     - time: 0.33333334
       value: {fileID: -851376259, guid: c17f0009aa8059e41a211c082c788900, type: 3}
     - time: 0.4
-      value: {fileID: -1154274636, guid: c17f0009aa8059e41a211c082c788900, type: 3}
+      value: {fileID: 498167787, guid: c17f0009aa8059e41a211c082c788900, type: 3}
     - time: 0.46666667
       value: {fileID: -1716819605, guid: c17f0009aa8059e41a211c082c788900, type: 3}
     attribute: m_Sprite
@@ -64,7 +64,7 @@ AnimationClip:
     - {fileID: 1801310527, guid: c17f0009aa8059e41a211c082c788900, type: 3}
     - {fileID: 561941923, guid: c17f0009aa8059e41a211c082c788900, type: 3}
     - {fileID: -851376259, guid: c17f0009aa8059e41a211c082c788900, type: 3}
-    - {fileID: -1154274636, guid: c17f0009aa8059e41a211c082c788900, type: 3}
+    - {fileID: 498167787, guid: c17f0009aa8059e41a211c082c788900, type: 3}
     - {fileID: -1716819605, guid: c17f0009aa8059e41a211c082c788900, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2

@@ -10,6 +10,7 @@ public class MainMenuHandler : MonoBehaviour
     [SerializeField] private GameObject _imageEarth;
     [SerializeField] private float _x, _y;
     [SerializeField] private AudioSource mainMenuMusic;
+    [SerializeField] private AudioSource M1Music;
 
     private Vector3 eulerAngles;
 
@@ -33,6 +34,7 @@ public class MainMenuHandler : MonoBehaviour
         Time.timeScale = 1.0f;
         gameObject.SetActive(false);
         mainMenuMusic.Stop();
+        M1Music.Play();
     }
 
     public void QuitGame()

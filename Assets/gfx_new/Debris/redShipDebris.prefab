@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1820307503619718682}
   - component: {fileID: 8839646535909136648}
   - component: {fileID: -7325678105069990138}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: redShipDebris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,6 +123,7 @@ MonoBehaviour:
   maxSpeed: 600
   maxTorque: 10
   forceAngleRange: 10
+  randomizeStartingFrame: 1
 --- !u!50 &-7325678105069990138
 Rigidbody2D:
   serializedVersion: 4
@@ -145,7 +146,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

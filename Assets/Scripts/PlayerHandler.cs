@@ -48,9 +48,11 @@ public class PlayerHandler : MonoBehaviour
         {   
             shipRenderer.enabled = false;
             GameObject exploding = Instantiate(explosion, transform.position, Quaternion.identity);
+            exploding.transform.SetParent(GameObject.Find("Effects").transform);
             exploding.GetComponent<SpriteRenderer>().sortingOrder = 60;
 
             AudioSource explosionSoundClone = Instantiate(explosionSound);
+            explosionSoundClone.transform.SetParent(GameObject.Find("Effects").transform);
             explosionSoundClone.Play();
             Destroy(explosionSoundClone.gameObject, explosionSoundClone.clip.length);
 
@@ -62,6 +64,7 @@ public class PlayerHandler : MonoBehaviour
             for (int i = 0; i < debrisCount; i++)
             {
                 GameObject clone = Instantiate(debris, transform.position, Quaternion.identity);
+                clone.transform.SetParent(GameObject.Find("Effects").transform);
                 clone.GetComponent<SpriteRenderer>().sortingOrder = 50;
             }
         }
@@ -108,18 +111,18 @@ public class PlayerHandler : MonoBehaviour
 
                 Vector2 moveDirection = moveActionToUse.action.ReadValue<Vector2>();
 
-                if (moveDirection.y > 0.0f && animationSpeed < 40)
+                if (moveDirection.y > 0.1f && animationSpeed < 40)
                 {
                     if (animationSpeed >= 0) animationSpeed += 4;
                     else if (animationSpeed < 0) animationSpeed += 8;
                     
                 }
-                else if (moveDirection.y < 0.0f && animationSpeed > -40)
+                else if (moveDirection.y < -0.1f && animationSpeed > -40)
                 {
                     if (animationSpeed <= 0) animationSpeed -= 4;
                     else if (animationSpeed > 0) animationSpeed -= 8;
                 }
-                else if (moveDirection.y == 0.0f)
+                else
                 {   
                     if (animationSpeed >= -40 && animationSpeed < 0)
                     {
