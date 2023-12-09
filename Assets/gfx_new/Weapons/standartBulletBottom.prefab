@@ -104,6 +104,7 @@ MonoBehaviour:
   whiteFlash: {fileID: 2705332189006220574, guid: 1022287b8b47abc4880ee247a6b92586, type: 3}
   dinkSound: {fileID: 3489275651783030550, guid: 3b1ebe08ed39feb41b8c211baf891b05, type: 3}
   isTop: 0
+  offsetY: 0.15
 --- !u!60 &3890621910655879200
 PolygonCollider2D:
   m_ObjectHideFlags: 0

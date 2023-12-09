@@ -13,6 +13,8 @@ public class ButtonHandler : MonoBehaviour
     [SerializeField] private AudioSource shootingSound;
     [SerializeField] private GameObject player; 
     [SerializeField] private GameObject bullets; 
+    [SerializeField] private GameObject pauseMenu; 
+    [SerializeField] private GameObject controls; 
     private int tick = 0;
 
     private bool shooting = false;
@@ -60,16 +62,18 @@ public class ButtonHandler : MonoBehaviour
 
     public void pauseGame()
     {
-        if (GameHandler.pause == false)
-            {
-                Time.timeScale = 0.0f;
-                GameHandler.pause = true;
-            }
-            else
-            {
-                Time.timeScale = 1.0f;
-                GameHandler.pause = false;
-            }
+        Time.timeScale = 0.0f;
+        GameHandler.pause = true;
+        pauseMenu.SetActive(true);
+        controls.SetActive(false);
+    }
+
+    public void resumeGame()
+    {
+        Time.timeScale = 1.0f;
+        GameHandler.pause = false;
+        pauseMenu.SetActive(false);
+        controls.SetActive(true);
     }
 
     void Start()

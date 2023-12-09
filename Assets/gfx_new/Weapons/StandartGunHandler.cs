@@ -12,8 +12,8 @@ public class StandartGunHandler : MonoBehaviour
     [SerializeField] private GameObject whiteFlash;
     [SerializeField] private AudioSource dinkSound;
     [SerializeField] private bool isTop;
-
-
+    [SerializeField] private float offsetY;
+    Vector3 origPos;
     private Camera cam;
     private float tick;
 
@@ -46,23 +46,25 @@ public class StandartGunHandler : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
+        origPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {   
-        tick += Time.deltaTime;
-        if (tick < 0.083f)
+
+        if (GameHandler.pause != true && GameHandler.StageIntro != true && Time.deltaTime < 0.08f) 
         {
-            transform.Translate(Vector2.right * Time.deltaTime * xSpeed);
-            if (isTop) transform.Translate(Vector2.up * Time.deltaTime * ySpeed);
-            else transform.Translate(Vector2.down * Time.deltaTime * ySpeed);
-            
+            tick += Time.deltaTime;
         }
-        else
-        {
-            transform.Translate(Vector2.right * Time.deltaTime * xSpeed);
-        }   
+
+        if (isTop && origPos.y + offsetY > transform.position.y) transform.Translate(Vector2.up * Time.deltaTime * ySpeed);
+        else if (!isTop && origPos.y - offsetY < transform.position.y) transform.Translate(Vector2.down * Time.deltaTime * ySpeed);
+
+        if (isTop && origPos.y + offsetY < transform.position.y) transform.position = new Vector3(transform.position.x, origPos.y + offsetY, 0);
+        else if (!isTop && origPos.y - offsetY > transform.position.y) transform.position = new Vector3(transform.position.x, origPos.y - offsetY, 0);
+
+        transform.Translate(Vector2.right * Time.deltaTime * xSpeed);
         DestroyBullet();
     }
 }

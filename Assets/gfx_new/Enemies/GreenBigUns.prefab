@@ -120,6 +120,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6a336eb5e06ed8c44918a8af1d73d9b2, type: 3}
   - {fileID: 21300000, guid: c82f16f1979c41d4b92622704102c087, type: 3}
   explosionSound: {fileID: 4004464044084007304, guid: 9116bc05f4da7b34c8eac8b1d8a45b0a, type: 3}
+  metalCrashSound: {fileID: 3776877120151257634, guid: dc1cc91275ebb6946babeefbec2ca39d, type: 3}
   explosion: {fileID: 3737014607972374688, guid: eb6cc84b882fc7c4d9e4dda89b04e5af, type: 3}
   smokeRing: {fileID: 4345605395841438110, guid: 37e7b6388c42bce4cbc2904360736e06, type: 3}
   damage0Collider: {fileID: -5742426947048200601}

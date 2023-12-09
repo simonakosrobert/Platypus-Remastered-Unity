@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GreenBigUnsSpawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {   
 
     private float tick = 0;
@@ -12,6 +12,7 @@ public class GreenBigUnsSpawner : MonoBehaviour
     [SerializeField] private int spawnRate;
     [SerializeField] private bool fromLeft;
     [SerializeField] private bool isRandomX;
+    [SerializeField] private float valueZ;
 
     Vector3 StartingPoint;
     private float randomX;
@@ -30,11 +31,13 @@ public class GreenBigUnsSpawner : MonoBehaviour
 
         if (fromLeft)
         {
-            StartingPoint = cam.ViewportToWorldPoint(new Vector3(0f - cloneSize.x - randomX, randomY, 0f));
+            StartingPoint = cam.ViewportToWorldPoint(new Vector3(0f - cloneSize.x - randomX, randomY, 0.0f));
+            StartingPoint.z = valueZ;
         }
         else
         {
             StartingPoint = cam.ViewportToWorldPoint(new Vector3(1f + cloneSize.x + randomX, randomY, 0f));
+            StartingPoint.z = valueZ;
         }
         
         clone.transform.position = StartingPoint;
@@ -52,7 +55,7 @@ public class GreenBigUnsSpawner : MonoBehaviour
     void Update()
     {   
 
-        if (GameHandler.StageIntro != true){
+        if (GameHandler.StageIntro != true && GameHandler.pause != true){
             tick += Time.deltaTime;
         }
         

@@ -18,7 +18,7 @@ public class DebrisHandler : MonoBehaviour
     private float randomOffset;
     private Rigidbody2D rigidBody;
 
-    Animator animator;
+    Animator theAnimator;
     AnimatorClipInfo[] animatorinfo;
     private Camera cam;
 
@@ -35,10 +35,10 @@ public class DebrisHandler : MonoBehaviour
         {
             randomOffset = 0f;
         }
-        animator = GetComponent<Animator>();
-        animator.speed = Random.Range(0.5f, 1.5f);
-        animatorinfo = GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
-        GetComponent<Animator>().Play(animatorinfo[0].clip.name, 0, randomOffset);
+        theAnimator = GetComponent<Animator>();
+        theAnimator.speed = Random.Range(0.5f, 1.5f);
+        animatorinfo = theAnimator.GetCurrentAnimatorClipInfo(0);
+        theAnimator.Play(animatorinfo[0].clip.name, 0, randomOffset);
         cam = Camera.main;
         rigidBody = GetComponent<Rigidbody2D>();
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, Random.Range(-forceAngleRange, forceAngleRange), transform.eulerAngles.z);
