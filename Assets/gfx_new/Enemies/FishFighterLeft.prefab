@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.5, y: 7, z: 1}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -105,11 +105,23 @@ MonoBehaviour:
   fishAnimator: {fileID: 4817604776624408516}
   LeftToUp: {fileID: 9100000, guid: 30b6ef3ee00841b4ab7b42262f05092f, type: 2}
   LeftToDown: {fileID: 9100000, guid: 3fffb510932396747ab80f28ec84c9dd, type: 2}
-  speed: 4
+  speed: 5
   explosionSound: {fileID: 3685314770147490027, guid: e29040ff6f99d1747bb4b7112e98e347, type: 3}
+  shotSound: {fileID: 4730639186157118637, guid: 4287a94d8f0d2d7499198c865cb4e705, type: 3}
   explosion: {fileID: 1183171466649600901, guid: 08ff41f9ecf04ab4db696f7630c1a081, type: 3}
-  debris: {fileID: 0}
-  debrisCount: 0
+  debris: {fileID: 9021069864106286054, guid: e8bf78d96c581ca40b0e397aea17f4dd, type: 3}
+  player: {fileID: 0}
+  bullet: {fileID: 2543199317157988472, guid: 63a3d09865b96ec4aabce214c18e9e5b, type: 3}
+  bulletSprites:
+  - {fileID: 1914849940, guid: c9051f29051516a44969df31bd598844, type: 3}
+  - {fileID: -1093045660, guid: c9051f29051516a44969df31bd598844, type: 3}
+  - {fileID: 555042632, guid: c9051f29051516a44969df31bd598844, type: 3}
+  - {fileID: 281687354, guid: c9051f29051516a44969df31bd598844, type: 3}
+  - {fileID: 1516735036, guid: c9051f29051516a44969df31bd598844, type: 3}
+  - {fileID: 823673532, guid: c9051f29051516a44969df31bd598844, type: 3}
+  - {fileID: -896034022, guid: c9051f29051516a44969df31bd598844, type: 3}
+  - {fileID: -1516985989, guid: c9051f29051516a44969df31bd598844, type: 3}
+  debrisCount: 8
 --- !u!95 &4817604776624408516
 Animator:
   serializedVersion: 5

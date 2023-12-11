@@ -27,7 +27,7 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] public int animationSpeed;
 
     public bool isExploded = false;
-    [SerializeField] private bool isInvincible = false;
+    [SerializeField] public bool isInvincible = false;
     [SerializeField] private int tick = 0;
 
     Camera cam;
@@ -44,7 +44,7 @@ public class PlayerHandler : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (!isInvincible && other.gameObject.CompareTag("Enemy"))
+        if (!isInvincible && (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("EnemyBullet")))
         {   
             shipRenderer.enabled = false;
             GameObject exploding = Instantiate(explosion, transform.position, Quaternion.identity);
@@ -56,8 +56,15 @@ public class PlayerHandler : MonoBehaviour
             explosionSoundClone.Play();
             Destroy(explosionSoundClone.gameObject, explosionSoundClone.clip.length);
 
-            other.GetComponent<EnemyHealth>().health -= 150;
-
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                other.GetComponent<EnemyHealth>().health -= 150;
+            }
+            else if (other.gameObject.CompareTag("EnemyBullet"))
+            {
+                Destroy(other.gameObject);
+            }
+            
             isExploded = true;
             isInvincible = true;
 

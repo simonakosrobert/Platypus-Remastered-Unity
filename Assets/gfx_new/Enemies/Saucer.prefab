@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53384c66c42a6804cb2fc1f2479f634d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amp: 1
-  freq: 5
+  amp: 1.2
+  freq: 3.5
   up1: {fileID: 21300000, guid: fc0b77e5d93f8b04492cd1dbee312112, type: 3}
   up2: {fileID: 21300000, guid: 6a4ddd390ef1d6449b3430e3d34e323e, type: 3}
   center: {fileID: 21300000, guid: c3a4a2e74decaa944a921392b85187fd, type: 3}
@@ -109,8 +109,11 @@ MonoBehaviour:
   down2: {fileID: 21300000, guid: 28ea0e0f3a8f59143801d069bd63632f, type: 3}
   speed: 2
   explosionSound: {fileID: 3685314770147490027, guid: e29040ff6f99d1747bb4b7112e98e347, type: 3}
+  shotSound: {fileID: 4730639186157118637, guid: 4287a94d8f0d2d7499198c865cb4e705, type: 3}
   explosion: {fileID: 1183171466649600901, guid: 08ff41f9ecf04ab4db696f7630c1a081, type: 3}
   debris: {fileID: 9021069864106286054, guid: e8bf78d96c581ca40b0e397aea17f4dd, type: 3}
+  bullet: {fileID: 7275554448525918455, guid: a5981857b40a7f44faf53460c409640f, type: 3}
+  player: {fileID: 0}
   debrisCount: 8
   goUpFirst: 1
 --- !u!60 &9194326322823738479
