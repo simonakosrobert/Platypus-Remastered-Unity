@@ -36,7 +36,6 @@ public class PlayerHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        SaveLoadData.Load();
         Application.targetFrameRate = 60;
         shipRenderer = ship.GetComponent<SpriteRenderer>();
         cam = Camera.main;

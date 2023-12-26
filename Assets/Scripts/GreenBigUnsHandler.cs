@@ -183,6 +183,9 @@ public class GreenBigUnsMovement : MonoBehaviour
                 Destroy(gameObject);
 
                 SaveLoadData._PlayerData.totalXP += 10;
+                InGameStats.totalPoints += 200;
+                InGameStats.pointCounterTimer = 0;
+                InGameStats.xpCounterTimer = 0;
 
                 for (int i = 0; i < debrisCount; i++)
                 {

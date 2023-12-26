@@ -15,6 +15,7 @@ public class ButtonHandler : MonoBehaviour
     [SerializeField] private GameObject bullets; 
     [SerializeField] private GameObject pauseMenu; 
     [SerializeField] private GameObject controls; 
+    [SerializeField] private GameObject MainMenuMAIN; 
     private int tick = 0;
 
     private bool shooting = false;
@@ -66,6 +67,15 @@ public class ButtonHandler : MonoBehaviour
         GameHandler.pause = true;
         pauseMenu.SetActive(true);
         controls.SetActive(false);
+    }
+
+    public void SkillsButton()
+    {
+        SaveLoadData._PlayerData.totalXP = 0;
+        InGameStats.bufferXP = 0;
+        SaveLoadData._PlayerData.skillPoint = 0;
+        LevelingSystem.CalculateLevel(true);
+        SaveLoadData.Save();
     }
 
     public void resumeGame()

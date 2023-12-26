@@ -92,6 +92,9 @@ public class SaucerHandler : MonoBehaviour
             Destroy(gameObject);
 
             SaveLoadData._PlayerData.totalXP += 2;
+            InGameStats.totalPoints += 10;
+            InGameStats.pointCounterTimer = 0;
+            InGameStats.xpCounterTimer = 0;
 
             for (int i = 0; i < debrisCount; i++)
             {

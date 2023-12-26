@@ -8,22 +8,8 @@ public class GameHandler : MonoBehaviour
     public static bool mainMenu = true;
     public static bool pause = false;
     public static bool StageIntro = true;
-
+    
     public static GameObject currentStage;
-
-    public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
-    {
-        float currentTime = 0;
-        float start = audioSource.volume;
-        while (currentTime < duration)
-        {
-            currentTime += Time.unscaledDeltaTime;
-            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
-            yield return null;
-        }
-        audioSource.Stop();
-        yield break;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -36,4 +22,17 @@ public class GameHandler : MonoBehaviour
     {
         
     }
+}
+
+public class InGameStats
+{
+    public static int totalPoints = 0;
+    public static int bufferPoints = 0;
+    public static float pointCounterTimer = 0;
+
+    public static int bufferXP = 0;
+    public static float xpCounterTimer = 0;
+
+    public static float sliderBuffer = 0;
+    public static float sliderBufferTimer = 0;
 }

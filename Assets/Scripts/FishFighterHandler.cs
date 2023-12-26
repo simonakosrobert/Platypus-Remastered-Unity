@@ -5,7 +5,6 @@ public class FishFighterHandler : MonoBehaviour
 {   
 
     [SerializeField] private bool toLeft;
-    private bool toUp;
     [SerializeField] private Animator fishAnimator;
     [SerializeField] private RuntimeAnimatorController LeftToUp;
     [SerializeField] private RuntimeAnimatorController LeftToDown;
@@ -17,9 +16,8 @@ public class FishFighterHandler : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private Sprite[] bulletSprites;
     [SerializeField] private int debrisCount;
-    private float Xspeed;
-    private float Yspeed;
     private bool turning;
+    private Vector2 shipDirection;
     private float tickDelta;
     private Camera cam;
     SpriteRenderer spriteRenderer;
@@ -167,6 +165,7 @@ public class FishFighterHandler : MonoBehaviour
         }
 
         bulletDirection = new Vector2(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad));
+        shipDirection = new Vector2(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad));
 
     }
 
@@ -180,7 +179,6 @@ public class FishFighterHandler : MonoBehaviour
             int dice = Random.Range(1, 201);
             if (dice <= 2)
             {   
-                GetCurrentSprite();
                 alreadyShot = true;
 
                 GameObject shot = Instantiate(bullet, bulletStartingPoint, Quaternion.identity);
@@ -233,6 +231,9 @@ public class FishFighterHandler : MonoBehaviour
             Destroy(gameObject);
 
             SaveLoadData._PlayerData.totalXP += 3;
+            InGameStats.totalPoints += 15;
+            InGameStats.pointCounterTimer = 0;
+            InGameStats.xpCounterTimer = 0;
 
             for (int i = 0; i < debrisCount; i++)
             {
@@ -247,8 +248,6 @@ public class FishFighterHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Xspeed = speed;
-        Yspeed = 0;
         cam = Camera.main;
         spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<PolygonCollider2D>();
@@ -256,7 +255,6 @@ public class FishFighterHandler : MonoBehaviour
         if (pos.y < 0.5f)
         {
             fishAnimator.runtimeAnimatorController = LeftToUp;
-            toUp = true;
         }
         else if (pos.y >= 0.5f)
         {
@@ -271,6 +269,7 @@ public class FishFighterHandler : MonoBehaviour
     {   
 
         Despawner();
+        GetCurrentSprite();
         Shoot();
         tickDelta = 0;
 
@@ -292,31 +291,8 @@ public class FishFighterHandler : MonoBehaviour
             tickDelta = Time.deltaTime;
         }
 
-        if (!turning)
-        {
-            transform.Translate(Vector3.left * Xspeed * tickDelta);
-        }
-        else if(turning)
-        {   
-            
-            if (Xspeed > 2f)
-            {
-                Xspeed -= speed/100;
-                Yspeed += speed/75;
-            }
 
-            transform.Translate(Vector3.left * Xspeed * tickDelta);
-
-            if (toUp)
-            {
-                transform.Translate(Vector3.up * Yspeed * tickDelta);
-            }
-            else
-            {
-                transform.Translate(Vector3.down * Yspeed * tickDelta);
-            }
-            
-        }
+        transform.Translate(shipDirection * speed * tickDelta);
         
     }
 
